@@ -16,6 +16,10 @@ export default class Renderer {
     this.whiteCellId = 2;
   }
 
+  getCellSize() {
+    return this.#cellSize;
+  }
+
   drawField() {
     this.#drawBackground();
     this.#drawCells();
