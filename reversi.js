@@ -1,9 +1,19 @@
 export default class Reversi {
   #field;
+  #turn;
   constructor() {
     this.#field = Array.from({length: 8}, () =>
       Array.from({length: 8}, () => 0)
     );
+    this.#turn = 1;
+  }
+
+  turnChange() {
+    this.#turn = this.#turn === 1 ? 2 : 1;
+  }
+
+  getTurn() {
+    return this.#turn;
   }
 
   getCols() {
