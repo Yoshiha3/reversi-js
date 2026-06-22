@@ -1,11 +1,11 @@
 export default class ClickHandler {
   constructor(canvas) {
     this.canvas = canvas;
-    this.onCellClick = null;
+    this.onCanvasClick = null;
     canvas.addEventListener("click", (e) => {
-      const cell = this.#getCoordinates(e);
+      const coordinates = this.#getCoordinates(e);
       if(this.onCellClick) {
-        this.onCellClick(cell);
+        this.onCanvasClick(coordinates);
       }
     });
   }
