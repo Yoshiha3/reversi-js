@@ -1,5 +1,5 @@
-import Reversi from "./reversi.js";
+import Game from "./game.js";
 
-const reversi = new Reversi();
+const game = new Game();
 
-reversi.renderer.drawField();
+game.render();

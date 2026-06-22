@@ -1,12 +1,9 @@
-import Renderer from "./renderer.js";
-
 export default class Reversi {
   #field;
   constructor() {
     this.#field = Array.from({length: 8}, () =>
       Array.from({length: 8}, () => 0)
     );
-    this.renderer = new Renderer(this);
   }
 
   getCols() {
