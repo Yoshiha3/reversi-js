@@ -4,7 +4,7 @@ export default class ClickHandler {
     this.onCanvasClick = null;
     canvas.addEventListener("click", (e) => {
       const coordinates = this.#getCoordinates(e);
-      if(this.onCellClick) {
+      if(this.onCanvasClick) {
         this.onCanvasClick(coordinates);
       }
     });
