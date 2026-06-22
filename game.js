@@ -19,7 +19,9 @@ export default class Game {
       const col = Math.floor(coordinates.x / cellSize);
       const row = Math.floor(coordinates.y / cellSize);
 
-      this.reversi.setCell(1, col, row);
+      const currentTurn = this.reversi.getTurn();
+      this.reversi.setCell(currentTurn, col, row);
+      this.reversi.turnChange();
       this.render();
     };
   }
