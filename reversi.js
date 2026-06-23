@@ -6,6 +6,14 @@ export default class Reversi {
       Array.from({length: 8}, () => 0)
     );
     this.#turn = 1;
+    this.init();
+  }
+
+  init() {
+    this.setCell(1, 3, 3);
+    this.setCell(1, 4, 4);
+    this.setCell(2, 4, 3);
+    this.setCell(2, 3, 4);
   }
 
   placeStone(x, y) {
