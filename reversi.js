@@ -8,6 +8,46 @@ export default class Reversi {
     this.#turn = 1;
   }
 
+  placeStone(x, y) {
+    this.setCell(this.#turn, x, y);
+    this.turnChange();
+  }
+
+  getFlips(turn, x, y) {
+
+  }
+
+  getFlipByDirection(turn, x, y, dx, dy) {
+    const flips = [];
+
+    if(this.getCell(x, y) !== 0) return flips;
+    let nx = x + dx;
+    let ny = y + dy;
+    const opposite = turn === 1 ? 2 : 1;
+
+    while(true) {
+      if(!this.isInField(nx, ny)) return [];
+      const cellId = this.getCell(nx, ny);
+
+      switch(cellId) {
+        case turn:
+          return flips;
+        case opposite:
+          flips.push({
+            x: nx,
+            y: ny,
+            id: cellId
+          });
+          break;
+        default:
+          return [];
+      }
+      
+      nx += dx;
+      ny += dy;
+    }
+  }
+
   turnChange() {
     this.#turn = this.#turn === 1 ? 2 : 1;
   }
