@@ -16,6 +16,7 @@ export default class Reversi {
 
   getFlips(turn, x, y) {
     const flips = [];
+    if(this.getCell(x, y) !== 0) return flips;
     for(let dx = -1; dx <= 1; dx++) {
       for(let dy = -1; dy <= 1; dy++) {
         if(dx === 0 && dy === 0) continue;
@@ -28,8 +29,6 @@ export default class Reversi {
 
   getFlipByDirection(turn, x, y, dx, dy) {
     const flips = [];
-
-    if(this.getCell(x, y) !== 0) return flips;
     let nx = x + dx;
     let ny = y + dy;
     const opposite = turn === 1 ? 2 : 1;
