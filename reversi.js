@@ -18,7 +18,7 @@ export default class Reversi {
 
   placeStone(x, y) {
     const flips = this.getFlips(this.#turn, x, y);
-    if(flips.length === 0) return;
+    if(!this.isPlaceable(this.#turn, x, y)) return;
 
     this.setCell(this.#turn, x, y);
     for(const cell of flips) {
@@ -26,6 +26,11 @@ export default class Reversi {
     }
 
     this.turnChange();
+  }
+
+  isPlaceable(turn, x, y) {
+    const flips = this.getFlips(turn, x, y);
+    return flips.length > 0;
   }
 
   getFlips(turn, x, y) {
