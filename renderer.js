@@ -23,6 +23,7 @@ export default class Renderer {
   drawField() {
     this.#drawBackground();
     this.#drawCells();
+    this.#drawPlaceableMarkers();
   }
   
   #drawBackground() {
@@ -34,6 +35,7 @@ export default class Renderer {
   #drawCells() {
     for(let y = 0; y < this.reversi.getRows(); y++) {
       for(let x = 0; x < this.reversi.getCols(); x++) {
+        this.canvas.stroke(0, 0, 0);
         switch(this.reversi.getCell(x, y)) {
           case this.blackCellId:
             this.canvas.fill(0, 0, 0);
@@ -49,6 +51,22 @@ export default class Renderer {
           x * this.#cellSize + this.#cellSize / 2,
           y * this.#cellSize + this.#cellSize / 2,
           this.#cellSize / 2
+        );
+      }
+    }
+  }
+  
+  #drawPlaceableMarkers() {
+    for(let x = 0; x < this.reversi.getCols(); x++) {
+      for(let y = 0; y < this.reversi.getRows(); y++) {
+        const isPlaceable = this.reversi.isPlaceable(this.reversi.getTurn(), x, y);
+        if(!isPlaceable) continue;
+        this.canvas.fill(120, 120, 120);
+        this.canvas.noStroke();
+        this.canvas.circle(
+          x * this.#cellSize + this.#cellSize / 2,
+          y * this.#cellSize + this.#cellSize / 2,
+          this.#cellSize / 8
         );
       }
     }
