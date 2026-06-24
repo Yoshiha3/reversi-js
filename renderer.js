@@ -57,8 +57,8 @@ export default class Renderer {
   }
   
   #drawPlaceableMarkers() {
-    for(let x = 0; x < this.reversi.getCols(); x++) {
-      for(let y = 0; y < this.reversi.getRows(); y++) {
+    for(let y = 0; y < this.reversi.getRows(); y++) {
+      for(let x = 0; x < this.reversi.getCols(); x++) {
         const isPlaceable = this.reversi.isPlaceable(this.reversi.getTurn(), x, y);
         if(!isPlaceable) continue;
         this.canvas.fill(120, 120, 120);
