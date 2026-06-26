@@ -6,19 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reversi</title>
   <style>
+    :root {
+      --player-info-shadow-color: rgba(128, 128, 128, 0.464)
+    }
+
     body {
       margin: 0;
       width: 100vw;
       height: 100vh;
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .player-info {
+      width: 100vw;
+      height: 7rem;
+      box-shadow: 
+        0px 5px 10px 0px var(--player-info-shadow-color),
+        0px -5px 10px 0px var(--player-info-shadow-color);
+      display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+    }
+
+    .turn-display {
+      border: 1px solid orange;
+      border-radius: 3rem;
+      padding: 10px;
     }
   </style>
 </head>
 
 <body>
+  <div class="player-info">
+    <h3>⚫️<span id="black-stone-count">2</span></h3>
+    <div class="turn-display" id="black-turn-notification">黒のターンです</div>
+  </div>
+
   <canvas id="canvas"></canvas>
+
+  <div class="player-info">
+    <h3>◯<span id="white-stone-count">2</span></h3>
+    <div class="turn-display" id="white-turn-notification">白のターンです</div>
+  </div>
+
   <script type="module" src="main.js"></script>
 </body>
 
