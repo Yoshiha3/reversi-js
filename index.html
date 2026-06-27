@@ -37,19 +37,35 @@
       border-radius: 3rem;
       padding: 10px;
     }
+
+    .stone {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      border: 1px solid black;
+    }
+
+    .black {
+      background-color: black;
+    }
+
+    .white {
+      background-color: white;
+    }
   </style>
 </head>
 
 <body>
   <div class="player-info">
-    <h3>⚫️<span id="black-stone-count">2</span></h3>
+    <h3><span class="stone black"></span><span id="black-stone-count">2</span></h3>
     <div class="turn-display" id="black-turn-notification">黒のターンです</div>
   </div>
 
   <canvas id="canvas"></canvas>
 
   <div class="player-info">
-    <h3>◯<span id="white-stone-count">2</span></h3>
+    <h3><span class="stone white"></span><span id="white-stone-count">2</span></h3>
     <div class="turn-display" id="white-turn-notification">白のターンです</div>
   </div>
 
