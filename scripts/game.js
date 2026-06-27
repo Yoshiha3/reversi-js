@@ -1,7 +1,7 @@
-import Reversi from "./reversi.js";
-import Renderer from "./renderer.js";
-import ClickHandler from "./click-handler.js";
-import StatusView from "./status-view.js";
+import Reversi from "./logic/reversi.js";
+import Renderer from "./render/renderer.js";
+import ClickHandler from "./event/click-handler.js";
+import StatusView from "./render/status-view.js";
 
 export default class Game {
   constructor() {
