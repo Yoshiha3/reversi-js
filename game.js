@@ -1,6 +1,7 @@
 import Reversi from "./reversi.js";
 import Renderer from "./renderer.js";
 import ClickHandler from "./click-handler.js";
+import StatusView from "./status-view.js";
 
 export default class Game {
   constructor() {
@@ -9,6 +10,7 @@ export default class Game {
     this.clickHandler = new ClickHandler(
       this.renderer.canvas.canvas
     );
+    this.statusView = new StatusView();
 
     this.setClickEvent();
   }
@@ -26,5 +28,9 @@ export default class Game {
 
   render() {
     this.renderer.drawField();
+
+    const turnColor = this.reversi.getTurn() === 1 ? "black" : "white";
+    this.statusView.clearTurnNotification();
+    this.statusView.showTurnNotification(turnColor);
   }
 }
