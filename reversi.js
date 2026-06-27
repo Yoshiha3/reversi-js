@@ -16,6 +16,16 @@ export default class Reversi {
     this.setCell(2, 3, 4);
   }
 
+  countStone(id) {
+    let count = 0;
+    for(let y = 0; y < this.getRows(); y++) {
+      for(let x = 0; x < this.getCols(); x++) {
+        if(this.getCell(x, y) === id) count++;
+      }
+    }
+    return count;
+  }
+
   placeStone(x, y) {
     const flips = this.getFlips(this.#turn, x, y);
     if(!this.isPlaceable(this.#turn, x, y)) return;

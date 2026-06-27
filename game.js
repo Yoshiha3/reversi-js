@@ -32,5 +32,14 @@ export default class Game {
     const turnColor = this.reversi.getTurn() === 1 ? "black" : "white";
     this.statusView.clearTurnNotification();
     this.statusView.showTurnNotification(turnColor);
+
+    this.statusView.setStoneCount(
+      "black",
+      this.reversi.countStone(1)
+    );
+    this.statusView.setStoneCount(
+      "white",
+      this.reversi.countStone(2)
+    );
   }
 }
