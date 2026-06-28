@@ -36,6 +36,15 @@ export default class Renderer {
     for(let y = 0; y < this.reversi.getRows(); y++) {
       for(let x = 0; x < this.reversi.getCols(); x++) {
         this.canvas.stroke(0, 0, 0);
+        this.canvas.noFill();
+        this.canvas.rect(
+          x * this.#cellSize,
+          y * this.#cellSize,
+          this.#cellSize,
+          this.#cellSize
+        );
+
+        this.canvas.noStroke();
         switch(this.reversi.getCell(x, y)) {
           case this.blackCellId:
             this.canvas.fill(0, 0, 0);
@@ -44,7 +53,7 @@ export default class Renderer {
             this.canvas.fill(255, 255, 255);
             break;
           default:
-            this.canvas.noFill();
+            continue;
         }
 
         this.canvas.circle(
