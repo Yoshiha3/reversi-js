@@ -18,7 +18,7 @@ export default class StatusView {
     this.#whiteStoneCountOutput = document.getElementById("white-stone-count");
     this.#whiteTurnNotification = document.getElementById("white-turn-notification");
     this.#whiteWin = document.getElementById("white-win");
-    this.#whiteLose = document.getElementById("whitek-lose");
+    this.#whiteLose = document.getElementById("white-lose");
     this.#whitePass = document.getElementById("white-pass");
   }
 
@@ -69,5 +69,20 @@ export default class StatusView {
   clearPass() {
     this.#blackPass.style.display = "none";
     this.#whitePass.style.display = "none";
+  }
+
+  showWinOrLose(winnerColor) {
+    switch(winnerColor) {
+      case "black":
+        this.#blackWin.style.display = "inline";
+        this.#whiteLose.style.display = "inline";
+        break;
+      case "white":
+        this.#whiteWin.style.display = "inline";
+        this.#blackLose.style.display = "inline";
+        break;
+      default:
+        console.error(`不明な色が引数で渡されました(color: ${color})`);
+    }
   }
 }

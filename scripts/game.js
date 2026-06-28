@@ -14,6 +14,7 @@ export default class Game {
 
     this.setClickEvent();
     this.setPassEvent();
+    this.setGameEndEvent();
   }
 
   setClickEvent() {
@@ -32,6 +33,18 @@ export default class Game {
     this.reversi.onPass = (turn) => {
       const passColor = turn === 1 ? "black" : "white";
       this.statusView.showPass(passColor);
+    };
+  }
+
+  setGameEndEvent() {
+    this.reversi.onGameEnd = (status) => {
+      if(status[1] > status[2]) {
+        this.statusView.showWinOrLose("black");
+      } else if(status[2] > status[1]) {
+        this.statusView.showWinOrLose("white");
+      } else {
+        // 引き分けの描画を追加
+      }
     };
   }
 
