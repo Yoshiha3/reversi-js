@@ -57,18 +57,18 @@ export default class Renderer {
   }
   
   #drawPlaceableMarkers() {
-    for(let y = 0; y < this.reversi.getRows(); y++) {
-      for(let x = 0; x < this.reversi.getCols(); x++) {
-        const isPlaceable = this.reversi.isPlaceable(this.reversi.getTurn(), x, y);
-        if(!isPlaceable) continue;
-        this.canvas.fill(120, 120, 120);
-        this.canvas.noStroke();
-        this.canvas.circle(
-          x * this.#cellSize + this.#cellSize / 2,
-          y * this.#cellSize + this.#cellSize / 2,
-          this.#cellSize / 8
-        );
-      }
-    }
+    const placeables = this.reversi.getPlaceables(
+      this.reversi.getTurn()
+    );
+
+    placeables.forEach(({x, y}) => {
+      this.canvas.fill(120, 120, 120);
+      this.canvas.noStroke();
+      this.canvas.circle(
+        x * this.#cellSize + this.#cellSize / 2,
+        y * this.#cellSize + this.#cellSize / 2,
+        this.#cellSize / 8
+      );
+    });
   }
 }
