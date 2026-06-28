@@ -13,6 +13,7 @@ export default class Game {
     this.statusView = new StatusView();
 
     this.setClickEvent();
+    this.setPassEvent();
   }
 
   setClickEvent() {
@@ -21,8 +22,16 @@ export default class Game {
       const col = Math.floor(coordinates.x / cellSize);
       const row = Math.floor(coordinates.y / cellSize);
 
+      this.statusView.clearPass();
       this.reversi.placeStone(col, row);
       this.render();
+    };
+  }
+
+  setPassEvent() {
+    this.reversi.onPass = (turn) => {
+      const passColor = turn === 1 ? "black" : "white";
+      this.statusView.showPass(passColor);
     };
   }
 
