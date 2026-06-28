@@ -43,7 +43,7 @@ export default class Game {
       } else if(status[2] > status[1]) {
         this.statusView.showWinOrLose("white");
       } else {
-        // 引き分けの描画を追加
+        this.statusView.showDraw();
       }
     };
   }

@@ -3,22 +3,26 @@ export default class StatusView {
   #blackTurnNotification;
   #blackWin;
   #blackLose;
+  #blackDraw;
   #blackPass;
   #whiteStoneCountOutput;
   #whiteTurnNotification;
   #whiteWin;
   #whiteLose;
+  #whiteDraw;
   #whitePass;
   constructor() {
     this.#blackStoneCountOutput = document.getElementById("black-stone-count");
     this.#blackTurnNotification = document.getElementById("black-turn-notification");
     this.#blackWin = document.getElementById("black-win");
     this.#blackLose = document.getElementById("black-lose");
+    this.#blackDraw = document.getElementById("black-draw");
     this.#blackPass = document.getElementById("black-pass");
     this.#whiteStoneCountOutput = document.getElementById("white-stone-count");
     this.#whiteTurnNotification = document.getElementById("white-turn-notification");
     this.#whiteWin = document.getElementById("white-win");
     this.#whiteLose = document.getElementById("white-lose");
+    this.#whiteDraw = document.getElementById("white-draw");
     this.#whitePass = document.getElementById("white-pass");
   }
 
@@ -84,5 +88,10 @@ export default class StatusView {
       default:
         console.error(`不明な色が引数で渡されました(color: ${color})`);
     }
+  }
+
+  showDraw() {
+    this.#blackDraw.style.display = "inline";
+    this.#whiteDraw.style.display = "inline";
   }
 }
