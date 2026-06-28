@@ -38,6 +38,16 @@ export default class Reversi {
     this.turnChange();
   }
 
+  getPlaceables(turn) {
+    const placeables = [];
+    for(let y = 0; y < this.getRows(); y++) {
+      for(let x = 0; x < this.getCols(); x++) {
+        if(this.isPlaceable(turn, x, y)) placeables.push({ x, y });
+      }
+    }
+    return placeables;
+  }
+
   isPlaceable(turn, x, y) {
     const flips = this.getFlips(turn, x, y);
     return flips.length > 0;
