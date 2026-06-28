@@ -7,7 +7,8 @@ export default class Renderer {
     this.reversi = reversi;
     this.#canvasSize = Math.min(
       600,
-      window.innerWidth
+      window.innerWidth,
+      window.innerHeight - 240 // player-info一つの高さが120px * 2
     );
     this.canvas = new Canvas(this.#canvasSize, this.#canvasSize);
     this.#cellSize = Math.min(
