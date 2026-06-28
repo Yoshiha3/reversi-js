@@ -2,9 +2,14 @@ import Canvas from "./canvas.js";
 
 export default class Renderer {
   #cellSize;
+  #canvasSize;
   constructor(reversi) {
     this.reversi = reversi;
-    this.canvas = new Canvas(600, 600);
+    this.#canvasSize = Math.min(
+      600,
+      window.innerWidth
+    );
+    this.canvas = new Canvas(this.#canvasSize, this.#canvasSize);
     this.#cellSize = Math.min(
       this.canvas.getSize().width,
       this.canvas.getSize().height
