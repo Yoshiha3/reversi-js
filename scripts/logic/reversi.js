@@ -7,6 +7,9 @@ export default class Reversi {
     );
     this.#turn = 1;
     this.init();
+
+    this.onGameEnd = null;
+    this.onPass = null;
   }
 
   init() {
@@ -35,7 +38,28 @@ export default class Reversi {
       this.setCell(this.#turn, cell.x, cell.y);
     }
 
-    this.turnChange();
+    const opposite = this.#turn === 1 ? 2 : 1;
+    const numOfPlaceables = this.getPlaceables(this.#turn).length;
+    const numOfOppositePlaceables = this.getPlaceables(opposite).length;
+
+    if(numOfOppositePlaceables > 0) {
+      this.turnChange();
+      return;
+    }
+
+    if(numOfPlaceables > 0) {
+      if(this.onPass) {
+        this.onPass(opposite);
+      }
+      return;
+    }
+
+    if(this.onGameEnd) {
+      this.onGameEnd({
+        1: this.countStone(1),
+        2: this.countStone(2)
+      });
+    }
   }
 
   getPlaceables(turn) {
