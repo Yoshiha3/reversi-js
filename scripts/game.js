@@ -4,6 +4,7 @@ import ClickHandler from "./event/click-handler.js";
 import StatusView from "./render/status-view.js";
 
 export default class Game {
+  #isInGame;
   constructor() {
     this.reversi = new Reversi();
     this.renderer = new Renderer(this.reversi);
@@ -11,6 +12,7 @@ export default class Game {
       this.renderer.canvas.canvas
     );
     this.statusView = new StatusView();
+    this.#isInGame = true;
 
     this.setClickEvent();
     this.setPassEvent();
@@ -45,15 +47,19 @@ export default class Game {
       } else {
         this.statusView.showDraw();
       }
+      this.statusView.clearTurnNotification();
+      this.#isInGame = false;
     };
   }
 
   render() {
     this.renderer.drawField();
 
-    const turnColor = this.reversi.getTurn() === 1 ? "black" : "white";
-    this.statusView.clearTurnNotification();
-    this.statusView.showTurnNotification(turnColor);
+    if(this.#isInGame) {
+      const turnColor = this.reversi.getTurn() === 1 ? "black" : "white";
+      this.statusView.clearTurnNotification();
+      this.statusView.showTurnNotification(turnColor);
+    }
 
     this.statusView.setStoneCount(
       "black",
